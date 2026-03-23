@@ -23,7 +23,7 @@ When('Fill the order details and place the order',async function () {
     this.orderID =  orderNumber;
 });
 
-Then('Verify order placed successfuly with order id generated',async function () {
+Then('Verify order placed successfully with order id generated',async function () {
     const orderPage = this.poManager.getOrdersPage();
     await orderPage.validateOrder(this.orderID ?? "its empty");
 });

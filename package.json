@@ -13,7 +13,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx cucumber-js --exit"
+    "test": "npx cucumber-js --exit",
+    "test_validation":"npx cucumber-js --tags \"@validation\" --exit",
+    "test_regression": "npx cucumber-js --tags \"@regression\" --exit",
+    "test_parallel": "npx cucumber-js features/orderCreation.feature --parallel 2 --exit",
+    "test_report": "npx cucumber-js features/orderCreation.feature --exit --format html:cucumberReport.html",
+    "test_retryandreport": "npx cucumber-js features/orderCreation.feature --retry 1 --exit --format html:cucumberReport.html"
   },
   "keywords": [],
   "author": "",
