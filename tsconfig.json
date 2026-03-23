@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "target": "ESNext",                          // Allows modern JavaScript features
+    "module": "commonjs",                        // Best for Cucumber.js + ts-node
+    "lib": ["ESNext", "dom"],                   // Essential for Playwright and modern JS
+    
+    /* Module Resolution */                         // Allows relative imports to work correctly
+    "resolveJsonModule": true,                  // FIXES: "Cannot find module ... .json"
+    "esModuleInterop": true,                     // Allows 'import fs from "fs"' instead of '* as fs'
+    
+    /* Strictness & Safety */
+    "strict": false,                             // Set to false to avoid "this: any" errors for now
+    "skipLibCheck": true,                        // Ignores errors in node_modules folders
+    "forceConsistentCasingInFileNames": true,
+    
+    /* Output */
+    "sourceMap": true                            // Helps with debugging in VS Code
+  },
+  "include": [
+    "features/**/*.ts",
+    "pages/**/*.ts",
+    "utils/**/*.ts"
+  ]
+}

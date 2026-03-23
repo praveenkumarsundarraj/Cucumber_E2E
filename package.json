@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "playwright": "^1.58.2"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.7.0",
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.5.0",
+    "ts-node": "^10.9.2"
+  },
+  "name": "cucumber_e2e",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cucumber-js --exit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
