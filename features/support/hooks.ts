@@ -18,7 +18,7 @@ Before({tags:"@validation"}, async function(this: CustomManager)
 Before({tags:"@regression"}, async function(this: CustomManager)
 {
     // here i initialize which i created in custom Manager
-    const browser =await chromium.launch({headless: true, timeout: 5000});
+    const browser =await chromium.launch({headless: true, timeout: 30000});
     this.context =await browser.newContext();
     this.page = await this.context.newPage();
     this.expect = expect;
