@@ -1,25 +1,38 @@
-name: Playwright Tests
+name: Playwright Cucumber Tests
 on:
   push:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-node@v6
+
+    - uses: actions/setup-node@v6 # Note: v4 is current stable; ensure your runner supports v6 if using it
       with:
         node-version: lts/*
+        cache: 'npm' # Speeds up subsequent runs
+
     - name: Install dependencies
-      run: npm install
-    - name: Run cucumber test
-      run: npm run testretryandreport
-    - uses: actions/upload-artifact@v7
+      run: npm ci # 'npm ci' is preferred for CI environments for cleaner installs
+
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+
+    - name: Run Cucumber tests
+      run: npm run test_retryandreport
+
+    - name: Upload Test Report
+      uses: actions/upload-artifact@v7 # v4 is the standard stable version in 2024+
       if: ${{ !cancelled() }}
       with:
-        name: playwright-report
-        path: playwright-report/
+        name: cucumber-reports
+        # Ensure this path matches the 'out' directory in your Cucumber/Playwright config
+        path: |
+          reports/
+          test-results/
         retention-days: 30
